@@ -1,0 +1,111 @@
+{% extends 'vehicle/adminbase.html' %}
+
+{% block content %}
+<!-- main content -->
+<div class="wrapper">
+  <!-- ****** table  start ********** -->
+  <div class="row">
+    <div class="col-12 col-m-12 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 style="color: red; text-align: center">
+          Parkings
+          </h3>
+
+            <form action="{% url 'show-parkings' %}" method="GET" class="header__search">
+              <label>
+                <svg
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 32 32"
+                >
+                  <title>Filter</title>
+                  <path
+                    d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z"
+                  ></path>
+                </svg>
+                <input name="q" placeholder="Filter..." />
+              </label>
+            </form>
+          
+        </div>
+
+        <div class="card-content">
+          <table>
+            <thead>
+              <tr>
+                <th>Car</th>
+                <th>Floor</th>
+                <th>Parking Type</th>
+                <th>Entry Date</th>
+                <th>Entry Time</th>
+                <th>End Date</th>
+                <th>End Time</th>
+                <th>Cost</th>
+                <th>Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+        {% for parking in parkings %}
+			  <tr>
+        {% if parking.car != None %}
+				<td><a href="{% url 'cars:car-details' parking.car.id %}" style="text-decoration: none;">{{ parking.car }}</a></td>
+        {% else %}
+        <td>- - - - -</td>
+        {% endif %}
+
+        {% if parking.floor != None %}
+				<td>{{ parking.floor }}</td>
+        {% else %}
+        <td>- - - - -</td>
+        {% endif %}
+
+				<td>{{ parking.parking_type }}</td>
+				<td>{{ parking.entry_date }}</td>
+        <td>{{ parking.entry_time }}</td>
+
+        {% if parking.end_date != None %}
+				<td>{{ parking.end_date }}</td>
+        {% else %}
+        <td>- - - - - -</td>
+        {% endif %}
+
+				{% if parking.end_time != None %}
+				<td>{{ parking.end_time }}</td>
+        {% else %}
+        <td>- - - - - -</td>
+        {% endif %}
+
+        {% if parking.cost != None %}
+        <td>{{ parking.cost }} SP</td>
+        {% else %}
+        <td>- - - -</td>
+        {% endif %}
+
+        <td>{{ parking.status }}</td>
+
+                <td>
+                  <a href="{% url 'update-parking' parking.id  %}"
+                     style="color: red; text-decoration: none; font-size: 25px">&#9998;</a>
+                </td>
+                <td>
+					<a href="{% url 'delete-parking' parking.id %}"
+                     style="color: blue; text-decoration: none; font-size: 25px">&#10008;</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ****** table start ********** -->
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</div>
+<!-- end main content -->
+{% endblock content %}

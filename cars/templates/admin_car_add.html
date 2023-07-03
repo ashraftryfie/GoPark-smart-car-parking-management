@@ -1,0 +1,61 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<head>
+  <style media="screen">
+    input[type=text],
+    select,
+    input[type=number],
+    textarea {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type=submit] {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<br><br><br><br><br>
+<h1 style="text-align:center;">ADD CAR</h1>
+<div>
+  <form method="POST" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
+    
+    {% csrf_token %}
+    <label for="owner">Owner</label>
+    {% render_field form2.owner class="form-control"  %}
+
+    <label for="brand">Car Brand</label>
+    {% render_field form2.brand class="form-control" placeholder="Car Brand" %}<br>
+
+    <label for="plateNumber">Car Plate Number</label>
+    {% render_field form.plate_number class="form-control" placeholder="Car Plate Number" %}
+
+    <label for="color">Car Color</label>
+    {% render_field form.color class="form-control" placeholder="Car Color" %}
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}

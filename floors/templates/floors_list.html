@@ -1,0 +1,57 @@
+{% extends 'vehicle/adminbase.html' %} {% block content %}
+<!-- main content -->
+<div class="wrapper">
+  <!-- ****** table  start ********** -->
+  <div class="row">
+    <div class="col-12 col-m-12 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 style="color: red; text-align: center">Floors</h3>
+        </div>
+
+        <div class="card-content">
+          <table>
+            <thead>
+              <tr>
+                <th>Floor</th>
+                <th>Number Of Parks</th>
+                <th>Number Of Busy Parks</th>
+                <th>Is Free</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for floor in floors %}
+              <tr>
+                <td>{{ floor }}</td>
+                <td>{{ floor.num_of_parks }}</td>
+                <td>{{ floor.busy_parks }}</td>
+                <td>{{ floor.is_free }}</td>
+                <td>
+                  <a
+                    href="{% url 'update-floor' floor.id %}"
+                    style="color: red; text-decoration: none; font-size: 25px"
+                    >&#9998;</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href="{% url 'delete-floor' floor.id %}"
+                    style="color: blue; text-decoration: none; font-size: 25px"
+                    >&#10008;</a
+                  >
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ****** table start ********** -->
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</div>
+<!-- end main content -->
+{% endblock content %}

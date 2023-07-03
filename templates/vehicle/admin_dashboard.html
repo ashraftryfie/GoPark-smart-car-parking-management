@@ -1,0 +1,135 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load static %}
+{% block content %}
+
+	<!-- main content -->
+	<div class="wrapper">
+
+	<!-- ****** cards start ********** -->
+		<div class="row cards-first-row">
+			<div class="col-3 col-m-6 col-sm-6">
+				<div class="counter bg-primary">
+					<p>
+						<i class="fas fa-users"></i>
+					</p>
+					<h3>{{total_customers}}</h3>
+					<p>Total Customers</p>
+				</div>
+			</div>
+			<div class="col-3 col-m-6 col-sm-6">
+				<div class="counter bg-warning">
+					<p>
+						<i class="fas fa-hat-cowboy"></i>
+					</p>
+					<h3>{{total_cars}}</h3>
+					<p>Total Cars</p>
+				</div>
+			</div>
+			<div class="col-3 col-m-6 col-sm-6">
+				<div class="counter bg-success">
+					<p>
+						<i class="fas fa-spinner"></i>
+					</p>
+					<h3>{{total_parkings}}</h3>
+					<p>Total Parkings</p>
+				</div>
+			</div>
+			<div class="col-3 col-m-6 col-sm-6">
+				<div class="counter bg-danger">
+					<p>
+						<i class="fas fa-comments"></i>
+					</p>
+					<h3>{{total_feedback}}</h3>
+					<p>Total Employees</p>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 2nd Cards Row -->
+		
+		<div class="row cards-second-row">
+			<div class="col-3 col-m-6 col-sm-6">
+				<div class="counter">
+					<p>
+						<i class="fas fa-users"></i>
+					</p>
+					<h3>{{total_parks}}</h3>
+					<p>Total Parks</p>
+				</div>
+			</div>
+			<div class="col-3 col-m-6 col-sm-6">
+				<div class="counter bg-warning">
+					<p>
+						<i class="fas fa-hat-cowboy"></i>
+					</p>
+					<h3>{{available_parks}}</h3>
+					<p>Available Parkings</p>
+				</div>
+			</div>
+			<div class="col-3 col-m-6 col-sm-6">
+				<div class="counter bg-success">
+					<p>
+						<i class="fas fa-spinner"></i>
+					</p>
+					<h3>{{total_car_parkings}}</h3>
+					<p>Total Reservations</p>
+				</div>
+			</div>
+			<div class="col-3 col-m-6 col-sm-6">
+				<div class="counter bg-danger">
+					<p>
+						<i class="fas fa-comments"></i>
+					</p>
+					<h3>{{total_feedback}}</h3>
+					<p>Total Feedback</p>
+				</div>
+			</div>
+		</div>
+<!-- ****** cards end ********** -->
+
+<!--
+<div class="row">
+			<div class="col-12 col-m-12 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 style="color:red; text-align:center" >Recent Enquiry By Customer</h3>
+					</div>
+					<div class="card-content">
+						<table>
+							<thead>
+								<tr>
+									<th>Customer Name</th>
+									<th>Car Name</th>
+									<th>Category</th>
+									<th>Car Model</th>
+									<th>Car Brand</th>
+									<th>Problem Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for c,r in data %}
+								<tr>
+									<td> {{c.get_name}}</td>
+									<td> {{r.vehicle_name}}</td>
+									<td>{{r.category}}</td>
+									<td>{{r.vehicle_model}}</td>
+									<td>{{r.vehicle_brand}}</td>
+									<td>{{r.problem_description}}</td>
+								</tr>
+								{% endfor %}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- ****** table start ********** -->
+
+<!-- <br><br><br><br><br><br>
+
+</div>
+<!-- ****** table  start ********** -->
+		
+	<!-- end main content -->
+{% endblock content %}

@@ -1,0 +1,88 @@
+{% extends 'vehicle/adminbase.html' %} {% block content %}
+<!-- main content -->
+<div class="wrapper">
+  <!-- ****** table  start ********** -->
+  <div class="row">
+    <div class="col-12 col-m-12 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 style="color: red; text-align: center">Customers Cars</h3>
+
+          <form
+            action="{% url 'cars:car-list' %}"
+            method="GET"
+            class="header__search"
+          >
+            <label>
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 32 32"
+              >
+                <title>Filter</title>
+                <path
+                  d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z"
+                ></path>
+              </svg>
+              <input name="q" placeholder="Filter by Brand, Owner name..." />
+            </label>
+          </form>
+        </div>
+        {% for message in messages %}
+        <div
+          class="alert alert-{{ message.tags }} alert-dismissible"
+          role="alert"
+        >
+          {{ message }}
+        </div>
+        {% endfor %}
+        <div class="card-content">
+          <table>
+            <thead>
+              <tr>
+                <th>Owner Name</th>
+                <th>Car Brand</th>
+                <th>Car Plate Number</th>
+                <th>Car Color</th>
+                <th>Car Parkings</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for car, parkings in data %}
+              <tr>
+                <td>{{ car.owner }}</td>
+                <td>{{ car.brand }}</td>
+                <td>{{ car.plate_number }}</td>
+                <td>{{ car.color }}</td>
+                <td>
+                  <a href="{% url 'car-parking' car.id %}">{{ parkings }}</a>
+                </td>
+                <td>
+                  <a
+                    href="{% url 'cars:update-car' car.id  %}"
+                    style="color: red; text-decoration: none; font-size: 25px"
+                    >&#9998;</a>
+                </td>
+                <td>
+                  <a
+                    href="{% url 'cars:delete-car' car.id  %}"
+                    style="color: blue; text-decoration: none; font-size: 25px"
+                    >&#10008;</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ****** table start ********** -->
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</div>
+<!-- end main content -->
+{% endblock content %}

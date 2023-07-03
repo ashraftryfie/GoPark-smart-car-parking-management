@@ -1,0 +1,84 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load widget_tweaks %}
+
+{% block content%}
+<head>
+  <style media="screen">
+    input[type="text"],
+    input[type="email"],
+    select,
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 1rem;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background-color: #4caf50;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 1rem;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<br/><br/><br/><br/><br/>
+
+<h1 style="text-align: center; color: rgb(87, 87, 182); font-weight: 700;">Site Settings</h1>
+
+<div>
+  <form method="POST"
+        enctype="multipart/form-data"
+        style="margin-left: 200px; margin-right: 200px">
+    {% csrf_token %}
+
+    <label for="name">Garage Name</label>
+    {% render_field form.garage_name class="form-control" placeholder="Garage Name" value=settings.garage_name %}
+    
+    <br/>
+
+    <label for="email">Garage Email</label>
+    {% render_field form.email class="form-control" placeholder="Garage Email" value=settings.email %}
+
+    <br/>
+
+    <label for="phone">Garage Phone No.</label>
+    {% render_field form.phone class="form-control" placeholder="Garage Phone No." value=settings.phone %}
+
+    <br/>
+
+    <label for="address">Garage Address</label>
+    {% render_field form.address class="form-control" placeholder="Garage Address" value=settings.address %}
+
+    <br/>
+
+    <label for="hourly_cost">Hourly Cost</label>
+    {% render_field form.hourly_cost class="form-control" placeholder="Hourly Cost" value=settings.hourly_cost %}
+
+    <br/>
+
+    <label for="reserved_hour_cost">Reserved Hour Cost</label>
+    {% render_field form.reserved_hour_cost class="form-control" placeholder="Reserved Hour Cost" value=settings.reserved_hour_cost %}
+
+    <br/><br/>
+    <input type="submit" value="Submit" />
+  </form>
+</div>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+{% endblock content %}

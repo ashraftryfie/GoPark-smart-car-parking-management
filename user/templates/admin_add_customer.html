@@ -1,0 +1,90 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<head>
+  <style media="screen">
+    input[type=text],input[type=tel], select,input[type=number] ,input[type=password], textarea{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+
+  </style>
+
+
+</head>
+
+<br><br><br><br><br>
+<h3 style="text-align:center;">Add/Update Customer</h3>
+<div>
+  <form method="POST" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
+  {% csrf_token %}
+
+    <label for="permission">Permission</label>
+    {% render_field form.permission class="form-control" %}
+    
+    <br/>
+
+    <label for="first_name">First Name</label>
+    {% render_field form.first_name class="form-control" %}
+
+    <br/>
+
+    <label for="Last_name">Last Name</label>
+    {% render_field form.last_name class="form-control" %}
+
+    <br/>
+
+    <label for="username">Username</label>
+    {% render_field form.username class="form-control" %}
+
+    <br/>
+    
+    <label for="email">Email</label>
+    {% render_field form.email class="form-control" %}
+
+    <br/>
+
+    <label for="password">Password</label>
+    {% render_field form.password class="form-control"%}
+
+    <br/>
+
+    <label for="phone_number">Phone Number</label>
+    {% render_field form.phone_number class="form-control" %}
+
+    <br/><br/>
+    <input type="submit" value="Submit" />
+  </form>
+
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $("#id_username").attr("placeholder", "Enter Username");
+        $("#id_password").attr("placeholder", "Enter Password");
+    </script>
+{% endblock %}

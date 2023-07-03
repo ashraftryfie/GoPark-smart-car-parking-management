@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoPark | Smart Parking Management System</title>
+  <video loop muted autoplay playsinline class="video">
+    <source src="{% static 'images/parking.mp4' %}" type="video/mp4" />
+  </video>
+  <link rel="icon" type="image/png" href="{% static 'images/app-icon.png' %}" />
+  <link href="{% static 'css/login_form.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="bg-heading">
+    <h2 class="w3-container w3-center w3-animate-zoom" class="section" style="font-size: 35px">
+      Smart Car Parking Management System
+    </h2>
+  </div>
+
+  <div class="box">
+
+    <h2>Login Here</h2>
+
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <div class="inputBox">
+        <input type="text" name="username" required onkeyup="this.setAttribute('value', this.value);" value="" />
+        <label>Username</label>
+      </div>
+      <div class="inputBox">
+        <input type="password" name="password" required onkeyup="this.setAttribute('value', this.value);" value="" />
+        <label>Password</label>
+      </div>
+      <input type="submit" name="sign-in" value="Sign In" />
+    </form>
+
+    <br />
+
+    <div class="form-group">
+      {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-success" style="color: red">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+</body>
+
+</html>
